@@ -1,8 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import listSlices from "./components/listSlices";
+import listReducer from "./components/listSlice";
+import detailReducer from "./components/detailSlice"
 
 export default configureStore({
   reducer: {
-    
+    list: listReducer,
+    detail: detailReducer
   },
 });

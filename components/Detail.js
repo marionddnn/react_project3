@@ -1,10 +1,12 @@
 import { View, Text, Button, FlatList, TextInput, ScrollView, Image} from "react-native";
 import { useRoute, useFocusEffect } from "@react-navigation/native";
-import { useEffect, useState } from "react";
-import Rating from "./Rating";
+import { useState } from "react";
+import { useSelector } from "react-redux";
+import { detailSelector } from "./detailSlice";
 
 const Detail = () => {
-    const route = useRoute();
+    const details = useSelector(detailSelector);
+    $r.props.store.getState();
 
     const [data, setData] = useState({});
 
@@ -20,16 +22,8 @@ const Detail = () => {
         }
     }
 
-    const addToMyList = () => {
-        const {item} = route.params;
-        console.log(formatDetail(item));
-        setData(formatDetail(item));
-    };
-
     useFocusEffect(() => {
-      if (!route.params) return;
-      addToMyList();
-      route.params = null;
+        setData(formatDetail(details));
     });
 
     return (

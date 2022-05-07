@@ -2,29 +2,20 @@ import { View, Text, Button, FlatList, TextInput, ScrollView } from "react-nativ
 import { useRoute, useFocusEffect } from "@react-navigation/native";
 import { useEffect, useState } from "react";
 import Rating from "./Rating";
+import { useSelector } from "react-redux";
+import { listSelector } from "./listSlice";
 
 const List = () => {
-    const route = useRoute();
-    const [myList, setList] = useState("{}");
-
-    const addToMyList = () => {
-      const {title, artist, link, type, id} = route.params;
-      setList([...myList, {id: id, title: title, artist : artist, type: type, link: link}]);
-      console.log(myList);
-    };
-
-    useFocusEffect(() => {
-      if (!route.params) return;
-      addToMyList();
-      route.params = null;
-    });
+    const list = useSelector(listSelector);
+    $r.props.store.getState();
 
     return (
       <ScrollView>
-        <FlatList
-        data={myList}
-        renderItem={({item})=> (
-          <>
+      <FlatList
+        data={list}
+        keyExtractor={(item) => item.id}
+        renderItem={({ item }) => 
+        <View>
           <Text style={{  marginRight : "1rem", fontSize : "1.2rem" }}>Artiste : {item.artist}</Text>
           <Text style={{  marginRight : "1rem" }}>Musique : {item.title}</Text>
           <Text style={{  marginRight : "1rem" }}>Genre : {item.type}</Text>
@@ -32,11 +23,9 @@ const List = () => {
           <View  style={{ flexDirection: "row" }}>
               <Rating/>
           </View>
-          </>
-        )} 
-        keyExtractor={({item})=> item}
-        >
-      </FlatList>
+        </View>
+        }
+      />
      </ScrollView>
     );
   };
