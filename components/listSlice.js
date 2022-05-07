@@ -5,11 +5,21 @@ const listSlice = createSlice({
   initialState: [],
   reducers: {
     addMusicToList: (state, action) => {
-      return [...state, {...action.payload}];
+      let present = state.map((item) => item.id == action.payload.id ? true : false);
+      if(present.includes(true)){
+        return state;
+      }
+      else {
+        return [...state, {...action.payload}];
+      }
     },
+    deleteMusic: (state, action) => {
+      let newList = state.filter(item => item.id !== action.payload.id);
+      return newList;
+    }
   }, 
 });
 
-export const { addMusicToList } = listSlice.actions;
+export const { addMusicToList, deleteMusic } = listSlice.actions;
 export const listSelector = (state) => state.list;
 export default listSlice.reducer;

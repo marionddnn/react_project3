@@ -2,12 +2,17 @@ import { View, Text, Button, FlatList, TextInput, ScrollView } from "react-nativ
 import { useRoute, useFocusEffect } from "@react-navigation/native";
 import { useEffect, useState } from "react";
 import Rating from "./Rating";
-import { useSelector } from "react-redux";
-import { listSelector } from "./listSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { listSelector, deleteMusic } from "./listSlice";
 
 const List = () => {
     const list = useSelector(listSelector);
-    $r.props.store.getState();
+    const dispatch = useDispatch();
+    //$r.props.store.getState();
+
+    const removeMusic = (item) => {
+      dispatch(deleteMusic(item));
+    };
 
     return (
       <ScrollView>
@@ -23,6 +28,7 @@ const List = () => {
           <View  style={{ flexDirection: "row" }}>
               <Rating/>
           </View>
+          <Button title="Supprimer" onPress={() => removeMusic(item)}></Button>
         </View>
         }
       />
