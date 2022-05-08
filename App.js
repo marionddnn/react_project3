@@ -4,14 +4,20 @@ import { Provider, useDispatch } from "react-redux";
 import List from './components/List';
 import Navigation from './components/Navigation';
 import store from "./store";
+import { PersistGate } from 'redux-persist/integration/react'
+import {persistStore} from 'redux-persist';
 //import Search from './components/Search';
+
+let persistor = persistStore(store);
 
 
 export default function App() {
   return (
     <>
      <Provider store={store}>
+      <PersistGate persistor={persistor}>
         <Navigation></Navigation>
+      </PersistGate>
       </Provider>
     </>
   );
