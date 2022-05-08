@@ -1,6 +1,6 @@
 import { View, Text, Button, FlatList, TextInput, Pressable, ScrollView } from "react-native";
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { addMusicToList } from "./listSlice";
 import { addMusicToDetails } from "./detailSlice";
 import { useNavigation } from "@react-navigation/native";

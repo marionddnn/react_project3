@@ -1,5 +1,5 @@
 import { View, Text, ScrollView, Image} from "react-native";
-import { useRoute, useFocusEffect } from "@react-navigation/native";
+import { useFocusEffect } from "@react-navigation/native";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { detailSelector } from "./detailSlice";

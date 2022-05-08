@@ -6,7 +6,6 @@ import Navigation from './components/Navigation';
 import store from "./store";
 import { PersistGate } from 'redux-persist/integration/react'
 import {persistStore} from 'redux-persist';
-//import Search from './components/Search';
 
 let persistor = persistStore(store);
 
