@@ -1,4 +1,4 @@
-import { View, Text, Button, FlatList, TextInput, ScrollView, Image} from "react-native";
+import { View, Text, ScrollView, Image} from "react-native";
 import { useRoute, useFocusEffect } from "@react-navigation/native";
 import { useState } from "react";
 import { useSelector } from "react-redux";
@@ -6,7 +6,6 @@ import { detailSelector } from "./detailSlice";
 
 const Detail = () => {
     const details = useSelector(detailSelector);
-    $r.props.store.getState();
 
     const [data, setData] = useState({});
 
